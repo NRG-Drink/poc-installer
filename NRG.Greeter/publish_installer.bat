@@ -1,0 +1,1 @@
+dotnet publish NRG.Greeter.Installations\NRG.Greeter.Installations.csproj -c Release -r win-x64 -o .\
