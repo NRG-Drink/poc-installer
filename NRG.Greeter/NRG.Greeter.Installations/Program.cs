@@ -18,8 +18,7 @@ internal class Program
             .CreateLinkAt(Path.Combine(_desktop, "Greeter"))
             .CreateLinkAt(Path.Combine(appFolder, "Greeter"))
             .OpenExplorerAfterInstallation()
-            .Build()
-            ;
+            .Build();
 
         try
         {

@@ -11,4 +11,10 @@
     <ProjectReference Include="..\NRG.Installations\NRG.Installations.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="app.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
