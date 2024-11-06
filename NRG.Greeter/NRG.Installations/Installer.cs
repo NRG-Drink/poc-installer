@@ -10,7 +10,7 @@ public partial class Installer
     private readonly LinkCreator _linkCreator = new();
     public string ZipPath { get; private set; }
     public string AppLocation { get; private set; }
-    public string AppExe { get; private set; }
+    public string AppExePathAbs { get; private set; }
     public bool OpenExplorerAfterInstallation { get; private set; } = false;
     public List<string> LinkLocations { get; private set; } = [];
 
@@ -30,7 +30,7 @@ public partial class Installer
 
         foreach (var link in LinkLocations)
         {
-            _linkCreator.CreateLink(link, AppExe, AppLocation);
+            _linkCreator.CreateLink(link, AppExePathAbs, AppLocation);
         }
 
         OpenFolderIfNeeded();

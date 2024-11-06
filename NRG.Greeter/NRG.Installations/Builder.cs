@@ -29,7 +29,7 @@ public partial class Installer
 
         public Builder WithAppExePath(string path)
         {
-            _installer.AppExe = path;
+            _installer.AppExePathAbs = path;
             return this;
         }
 
