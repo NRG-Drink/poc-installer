@@ -4,20 +4,15 @@ namespace NRG.Installations;
 
 public class LinkCreator
 {
-    public void CreateLink(string link, string target, string workingDirectory, bool overwriteOnEixtence = true)
+    public void CreateLink(string link, string target, string workingDirectory, bool overwriteOnExistence = true)
     {
         var validLink = ExtendLnkIfNeeded(link);
 
-        if (System.IO.File.Exists(link))
+        var fileExistsAndShouldOverwrite = overwriteOnExistence && System.IO.File.Exists(link);
+        if (!overwriteOnExistence && System.IO.File.Exists(link))
         {
-            //if (overwriteOnEixtence)
-            //{
-            //    System.IO.File.Delete(link);
-            //}
-            //else
-            //{
-                throw new Exception("Link already exists");
-            //}
+            throw new LinkOverwriteException(
+                $"Link already exists. ({nameof(overwriteOnExistence)} = {overwriteOnExistence})");
         }
 
         var shell = new WshShell();
@@ -34,3 +29,5 @@ public class LinkCreator
             ? link
             : link += ".lnk";
 }
+
+public class LinkOverwriteException(string message) : Exception(message);
